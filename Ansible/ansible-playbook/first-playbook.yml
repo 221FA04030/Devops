@@ -1,0 +1,32 @@
+#!/bin/bash
+
+#######################################################
+
+#author : chiru
+
+#date : 06/07/2026
+
+#installing nginx in target server using ansible-playbook
+
+#version : v1
+
+####################################################
+
+
+- name: install and start nginx
+  hosts: all
+  become: yes
+
+
+  tasks:
+    - name: install nginx
+      apt:
+        name: nginx
+        state: present
+
+
+    - name: start nginx
+      service:
+         name: nginx
+         state: started
+
