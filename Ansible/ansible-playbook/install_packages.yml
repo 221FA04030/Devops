@@ -1,0 +1,35 @@
+#!/bin/bash
+
+
+#####################################
+#author : chiru
+
+#date : 06/07/2026
+
+#installing all common packages for linux
+
+#version : v1
+
+
+######################################
+
+
+- name: install all common linux packages
+  hosts: all
+  become: yes
+  
+  tasks: 
+   - name: update apt packages
+     apt:
+      update_cache: yes
+
+   - name: install common packages
+     apt: 
+      name:
+         - git
+         - curl
+         - vim
+         - tree
+         - unzip
+      state: present
+           
