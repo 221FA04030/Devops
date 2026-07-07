@@ -1,0 +1,28 @@
+
+#############################################
+
+#author : chiru
+
+#date : 07-07-2026
+
+#manging ngnix service 
+
+#vesion : v1
+
+############################################
+
+
+---
+- name: managing service
+  hosts: all
+  become: yes
+
+  tasks:
+   - name: start and enable nginx
+ 
+     service:
+       name : nginx
+       state: started
+       enabled: yes
+
+ 
