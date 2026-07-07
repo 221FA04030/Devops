@@ -1,0 +1,35 @@
+
+
+####################################
+
+#author : chiru
+
+#date : 07-07-2026
+
+#installing multiple packages using variables
+
+#version : v1
+
+####################################
+
+
+---
+- name: mutiple_packages_vars
+  hosts: all
+  become: yes
+
+  vars:
+    packages:
+      - git
+      - curl
+      - tree
+      - vim
+ 
+  tasks:
+    - name: install packages
+      apt:
+        name: "{{ packages }}"
+        state: present
+        update_cache: yes
+ 
+
