@@ -1,0 +1,30 @@
+
+
+############################################
+
+#Author : chiru
+
+#date : 7/07/2026
+
+#creating a new linux user
+
+#version :v1
+
+############################################
+
+
+---
+- name: linux-user
+  hosts: all
+  become: yes
+
+
+  tasks:
+    - name: create devops user
+      user:
+       name: devops
+       shell: /bin/bash
+       create_home: yes
+       state: present
+
+
