@@ -1,0 +1,29 @@
+
+
+
+###################################
+#author : chiru
+
+#date : 07-07-2026
+
+#copying a file from control node to remote server 
+
+#version : v1
+
+#####################################
+
+
+---
+- name: copy a file to remote server
+  hosts: all
+  become: yes
+
+  tasks:
+   - name: copy hello.txt
+     copy:
+
+       src: files/hello.txt
+       dest: /home/ubuntu/hello.txt
+       owner: ubuntu
+       group: ubuntu
+       mode: '0644'
