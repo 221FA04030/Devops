@@ -1,0 +1,30 @@
+
+
+
+######################################
+
+#author : chiru
+
+#date : 07-07-2026
+
+#creating directory in targeted files
+
+#version : v1
+
+#######################################
+
+
+---
+- name: create directory in targeted server
+  hosts: all
+  become: yes
+
+  tasks: 
+    - name: create_directory
+      file:
+      
+       path: /home/ubuntu/project
+       state: directory
+       owner: ubuntu
+       group: ubuntu
+       mode: '0755'
