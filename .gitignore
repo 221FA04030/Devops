@@ -1,0 +1,9 @@
+# Terraform
+Terraform/Project-01/.terraform/
+Terraform/Project-01/*.tfstate
+Terraform/Project-01/*.tfstate.*
+
+# General
+.terraform/
+*.tfstate
+*.tfstate.*
