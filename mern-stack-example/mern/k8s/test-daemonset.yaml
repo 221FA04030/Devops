@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: DaemonSet
+
+metadata:
+  name: test-daemonset
+
+spec:
+  selector:
+    matchLabels:
+      app: test-daemon
+
+  template:
+    metadata:
+      labels:
+        app: test-daemon
+
+    spec:
+      containers:
+        - name: agent
+          image: busybox
+          command: ["sh", "-c", "while true; do echo Node agent running; sleep 30; done"]

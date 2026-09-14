@@ -1,0 +1,30 @@
+# Docker Compose configuration
+services:
+
+  # Backend service
+  backend:
+    # Use the Dockerfile inside the server folder
+    build: ./server
+
+    # Name of the backend container
+    container_name: mern-backend
+
+    # Host port : Container port
+    ports:
+      - "5050:5050"
+
+  # Frontend service
+  frontend:
+    # Use the Dockerfile inside the client folder
+    build: ./client
+
+    # Name of the frontend container
+    container_name: mern-frontend
+
+    # Host port : Container port
+    ports:
+      - "5173:5173"
+
+    # Start backend before frontend
+    depends_on:
+      - backend
