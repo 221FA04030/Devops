@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+
+metadata:
+  name: mern-backend
+
+spec:
+  replicas: {{ .Values.backend.replicas }}
+
+  selector:
+    matchLabels:
+      app: mern-backend
+
+  template:
+    metadata:
+      labels:
+        app: mern-backend
+
+    spec:
+      containers:
+        - name: backend
+          image: mern-backend:latest
+          imagePullPolicy: Never
+
+          
+
+          ports:
+            - containerPort: 5050
+
+          # Resource Requests & Limits
+          resources:
+            requests:
+              cpu: "250m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+
+          # 1. Startup Probe
+          startupProbe:
+            httpGet:
+              path: /record/
+              port: 5050
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          # 2. Readiness Probe
+          readinessProbe:
+            httpGet:
+              path: /record/
+              port: 5050
+            initialDelaySeconds: 5
+            periodSeconds: 10
+
+          # 3. Liveness Probe
+          livenessProbe:
+            httpGet:
+              path: /record/
+              port: 5050
+            initialDelaySeconds: 5
+            periodSeconds: 10
